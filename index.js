@@ -3,6 +3,9 @@ const express = require("express");
 const rootRouter = require("./routes/root");
 const userRouter = require("./routes/user");
 const productRouter = require("./routes/product");
+const connectMongo = require("./config/connectDB");
+
+connectMongo().catch((err) => console.log(err));
 
 const app = express();
 app.set("views", "./views");
