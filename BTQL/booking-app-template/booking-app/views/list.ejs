@@ -1,0 +1,27 @@
+<h2>Danh sách lịch đặt chỗ</h2>
+<a href="/create">+ Thêm đặt chỗ</a>
+<table border="1">
+  <tr>
+    <th>ID</th><th>Tên khách</th><th>Ngày</th><th>Giờ</th><th>Trạng thái</th><th>Hành động</th>
+  </tr>
+  <% bookings.forEach(b => { %>
+    <tr>
+      <td><%= b.id %></td>
+      <td><%= b.customerName %></td>
+      <td><%= b.date %></td>
+      <td><%= b.time %></td>
+      <td style="color:
+        <%= b.status === 'Pending' ? 'orange' :
+             b.status === 'Confirmed' ? 'green' :
+             'red' %>">
+        <%= b.status %>
+      </td>
+      <td>
+        <a href="/edit/<%= b.id %>">Sửa</a>
+        <form action="/cancel/<%= b.id %>" method="POST" style="display:inline">
+          <button type="submit">Hủy</button>
+        </form>
+      </td>
+    </tr>
+  <% }) %>
+</table>
